@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/google": "^1.2.10",
     "@prisma/client": "6.6.0",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^3.0.0",
     "@types/dotenv": "^8.2.3",
     "@types/jsonwebtoken": "^9.0.9",
+    "ai": "^4.3.5",
     "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",

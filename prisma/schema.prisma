@@ -8,9 +8,23 @@ datasource db {
 }
 
 model User {
-  id        String    @id         @default(uuid())
-  email     String    @unique
-  password  String
-  firstName String
-  lastName  String
+  id                  String      @id         @default(uuid())
+  email               String      @unique
+  password            String
+  firstName           String
+  lastName            String
+  generate            Generate[]
+}
+
+model Generate {
+  id                  String      @id          @default(uuid())
+  createdAt           DateTime                 @default(now())
+  questions           Json
+  type                String
+  role                String
+  level               String
+  techStack           String
+  num_of_questions    String
+  userId              String
+  user                User        @relation(fields: [userId], references: [id])
 }
