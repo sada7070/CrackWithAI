@@ -1,5 +1,6 @@
 import { CTASection } from "@/components/ctaSection";
 import { Features } from "@/components/features";
+import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/heroSection";
 import { HowItWorks } from "@/components/howItWorks";
 import { Testimonials } from "@/components/testimonials";
@@ -13,5 +14,6 @@ export default function Home() {
     <HowItWorks />
     <Testimonials />
     <CTASection />
+    <Footer />
   </div>
 }
