@@ -8,7 +8,14 @@ import { Header } from "@/components/ui/header";
 
 export function HomePage() {
     return <div>
-        <Header />
+        <Header
+            navLinks={[
+                { href: "#features", label: "Features" },
+                { href: "#how-it-works", label: "How It Works" },
+            ]}
+            buttonLabel="Get Started"
+            buttonHref="/signin"
+        />
         <HeroSection />
         <Features />
         <HowItWorks />

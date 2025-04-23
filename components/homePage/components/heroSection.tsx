@@ -18,7 +18,7 @@ export function HeroSection() {
                     No more awkward mirror rehearsals or begging friends to play pretend recruiter. Just talk to our smart AI like you’re on a 
                     real call, and get helpful feedback immediately. It’s interview prep made easy, chill, and actually kind of fun.                </p>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                    <Link href="#get-started">
+                    <Link href="/signin">
                       <Button size="lg" className="gap-1">
                         Start Practicing Now <ArrowRight className="h-4 w-4" />
                       </Button>

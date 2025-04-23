@@ -7,7 +7,9 @@ export function Footer() {
       <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
         <div className="flex items-center gap-2 font-bold text-xl">
           <BrainCog className="h-6 w-6 text-primary" />
-          <span>CrackWithAI</span>
+          <Link href="/">
+            <span>CrackWithAI</span>
+          </Link>
         </div>
         <nav className="flex gap-4 md:gap-6 flex-wrap">
           <Link href="#features" className="text-sm hover:underline underline-offset-4">
