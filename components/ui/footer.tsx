@@ -1,7 +1,16 @@
 import { BrainCog } from "lucide-react";
 import Link from "next/link";
 
-export function Footer() {
+type NavItem = {
+  label: string;
+  href: string;
+};
+
+type FooterProps = {
+  navItems?: NavItem[];
+};
+
+export function Footer({ navItems }: FooterProps) {
     return <footer className="border-t bg-white dark:bg-background">
     <div className="container flex flex-col gap-6 py-8 md:py-12 px-4 md:px-6">
       <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
@@ -11,20 +20,19 @@ export function Footer() {
             <span>CrackWithAI</span>
           </Link>
         </div>
-        <nav className="flex gap-4 md:gap-6 flex-wrap">
-          <Link href="#features" className="text-sm hover:underline underline-offset-4">
-            Features
-          </Link>
-          <Link href="#how-it-works" className="text-sm hover:underline underline-offset-4">
-            How It Works
-          </Link>
-          <Link href="#" className="text-sm hover:underline underline-offset-4">
-            Privacy Policy
-          </Link>
-          <Link href="#" className="text-sm hover:underline underline-offset-4">
-            Terms of Service
-          </Link>
-        </nav>
+        {navItems?.length ? (
+            <nav className="flex gap-4 md:gap-6 flex-wrap">
+              {navItems.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="text-sm hover:underline underline-offset-4"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          ) : null}
       </div>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-sm text-gray-500">© 2025 CrackWithAI. All rights reserved.</p>
