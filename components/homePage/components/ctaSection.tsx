@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 
 export function CTASection() {
     return <section id="get-started" className="w-full py-12 md:py-24 lg:py-32 bg-primary text-white">
