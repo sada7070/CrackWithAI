@@ -1,18 +1,32 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
 import Image from "next/image";
+import { dummyInterviews } from "../lib";
+import InterviewCard from "@/components/interviewCard";
 
 export default function Dashboard() {
     return <div>
         <Header />
 
         <section>
-            <div className="bg-gradient-to-t from-slate-100  via-white to-slate-500 dark:bg-gradient-to-t dark:from-background  dark:via-zinc-950 dark:to-slate-500">
+            <div className="bg-gradient-to-t from-white  via-slate-200 to-slate-500 dark:bg-gradient-to-t dark:from-background  dark:via-zinc-950 dark:to-slate-500">
                 <div className="flex justify-center items-center md:gap-15 mx-10">
                     <div>
-                        <div className="text-4xl">🎮 Game Mode: ON</div>
-                        <div className="text-2xl text-wrap max-w-200 pl-2 py-6">Welcome to the CrackWithAI. No pressure… just your skills, mindset, and story on full display.
+                        <blockquote className="mt-6 md:mt-0 text-center md:text-start text-3xl font-semibold text-gray-900 italic dark:text-white">
+                            🎮 Game Mode:
+                        <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500 ml-2">
+                            <span className="relative text-white dark:text-gray-950">ON</span>
+                        </span>
+                        </blockquote>
+                        <div className="text-2xl text-wrap max-w-200 pl-1 py-6">Welcome to the CrackWithAI. No pressure… just your skills, mindset, and story on full display.
                         Power up—your moment starts now. ⚡
+                        </div>
+                        <div className="mt-2 ml-2 flex justify-center md:justify-start">
+                            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-md font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+                                    Create an Interview Now!!
+                                </span>
+                            </button>
                         </div>
                     </div>
                     <Image
@@ -27,7 +41,18 @@ export default function Dashboard() {
                 </div>
             </div>
         </section>
-        
+
+        <section className="mx-18 md:mx-30">
+            <div className="flex flex-col gap-6 mt-20">
+                <h2 className="text-4xl pb-6">Your Interviews</h2>
+
+                <div className="flex flex-wrap gap-10 max-lg:flex-col w-full items-stretch pb-20">
+                    {dummyInterviews.map((interview) => (
+                        <InterviewCard {...interview} key={interview.id} />
+                    ))}
+                </div>
+            </div>
+        </section>
         <Footer />
     </div>
 }

@@ -42,8 +42,11 @@ export function HeroSection() {
                   />
                   <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex items-center gap-2">
-                      <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                      <span className="text-sm font-medium text-black">AI Voice Assistant Active</span>
+                    <span className="relative flex size-3">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                    </span>
+                    <span className="text-sm font-medium text-black">AI Voice Assistant Active</span>
                     </div>
                   </div>
                 </div>
