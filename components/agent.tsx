@@ -52,8 +52,8 @@ const Agent = ({userName}: AgentProps) => {
         </div>
 
         {messages.length > 0 && (
-            <div className=" bg-gradient-to-b from-[#4B4D4F] to-[#4B4D4F33] p-0.5 rounded-2xl w-full mt-8">
-                <div className="bg-gradient-to-b from-[#1A1C20] to-[#08090D] rounded-2xl  min-h-12 px-5 py-3 flex items-center justify-center">
+            <div className=" bg-gradient-to-b from-[#aebbea] to-[#0a52bf] dark:bg-gradient-to-b dark:from-slate-50 dark:to-slate-400 p-0.5 rounded-2xl w-full mt-8">
+                <div className="bg-gradient-to-b from-[#f2f3f6] to-[#70a4f1] dark:bg-gradient-to-b dark:from-slate-400 dark:to-slate-800 rounded-2xl text-lg min-h-12 px-5 py-3 flex items-center justify-center">
                     <p key={lastMessage} className={cn('transition-opacity duration-500 opacity-0', 'animation: fadeIn 0.5s ease-in-out opacity-100')}>
                         {lastMessage}
                     </p>

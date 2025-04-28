@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
                 `,
         });
         
-        // adding everything to db so it can will be used later to take interview.
+        // adding everything to db so it csn be used later to take interview.
         const aiResponse = await prismaClient.generate.create({
             data: {
                 type: parsedData.data.type,
@@ -74,7 +74,6 @@ export async function POST(req: NextRequest) {
         });
 
     } catch(error) {
-        console.log(error);
         return NextResponse.json({
             error
         }, {
