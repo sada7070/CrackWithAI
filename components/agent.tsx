@@ -1,6 +1,11 @@
+'use client';
+
 import { BrainCog } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { vapi } from "@/lib/vapi.sdk";
 
 interface AgentProps {
     userName: string;
@@ -18,13 +23,75 @@ enum CallStatus {
     FINISHED = 'FINISHED',
 }
 
-const Agent = ({userName}: AgentProps) => {
-    const callStatus = CallStatus.INACTIVE;
-    const isSpeaking = true;
-    const messages = [
-        'What is your name?',
-        'My name is John Smith, nice to  meet you!'
-    ]
+interface SavedMessage {
+    role: 'user' | 'system' | 'assistant';
+    content: string;
+}
+
+
+const Agent = ({userName, userId, type}: AgentProps) => {
+    const router = useRouter();
+
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
+    const [messages, setMessages] = useState<SavedMessage[]>([]);
+
+    useEffect(() => {
+        const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
+        const onCallEnd = () => setCallStatus(CallStatus.INACTIVE);
+
+        const onMessage = (message: Message) => {
+            if(message.type === 'transcript' && message.transcriptType === 'final') {
+                const newMessage = {
+                    role: message.role,
+                    content: message.transcript
+                }
+                setMessages((prev) => [...prev, newMessage]);
+            }
+        }
+
+        const onSpeechStart = () => setIsSpeaking(true);
+        const onSpeechEnd = () => setIsSpeaking(false);
+
+        const onError = (error: Error) => console.log('Error', error);
+
+        //vapi event listeners
+        vapi.on('call-start', onCallStart);
+        vapi.on('call-end', onCallEnd);
+        vapi.on('message', onMessage);
+        vapi.on('speech-start', onSpeechStart);
+        vapi.on("speech-end", onSpeechEnd);
+        vapi.on('error', onError);
+
+        //clearing listeners
+        return () => {
+            vapi.off('call-start', onCallStart);
+            vapi.off('call-end', onCallEnd);
+            vapi.off('message', onMessage);
+            vapi.off('speech-start', onSpeechStart);
+            vapi.off("speech-end", onSpeechEnd);
+            vapi.off('error', onError);
+        }
+
+    },[]);
+
+    useEffect(() => {
+        if(callStatus === CallStatus.FINISHED) {
+            router.push('/dashboard');
+        }
+    },[messages, callStatus, type, userId]);
+    
+    const handleCall = async() => {
+        setCallStatus(CallStatus.CONNECTING);
+
+        //telling vapi to connect
+        await vapi.start(process.env.NEXT_PUBLIC_VAPI_TOKEN!);
+    }
+
+    const handleDisconnect = async() => {
+
+    }
+
     const lastMessage = messages[messages.length - 1];
 
     return <div>
@@ -62,7 +129,7 @@ const Agent = ({userName}: AgentProps) => {
         )}
 
         <div className="flex justify-center w-full mt-5">
-                    {callStatus != 'ACTIVE' ? (
+                    {callStatus != 'INACTIVE' ? (
                         <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl">
                             <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' & 'hidden')}/>
                             <span>

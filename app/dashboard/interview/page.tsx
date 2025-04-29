@@ -6,20 +6,23 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 
 export default function Interview() {
-    type user = {
+    type User = {
         firstName: string;
         lastName: string;
         userId: string;
     }
-    const[user, setUser] = useState(null);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         const fetchUser = async() => {
             try{
                 const token = localStorage.getItem('token');
+                if(!token) {
+                    return;
+                }
                 const res = await axios.get('/api/user', {
                     headers: {
-                        Authorization: token || ''
+                        Authorization: token,
                     },
                 });
                 setUser(res.data)
@@ -29,7 +32,7 @@ export default function Interview() {
             }
         };
         fetchUser()
-    },[]);
+    },[]);  
 
     return <div>
         <Header />
@@ -37,7 +40,9 @@ export default function Interview() {
         <div className="my-6 mx-17 md:mx-50">
             <p className="text-4xl mb-6 font-bold flex justify-center items-center md:justify-start">Interview Generation</p>
             <div>
-                <Agent userName={user?.firstName} userId={user?.userId} type='generate' />
+                {user && (
+                    <Agent userName={user?.firstName} userId={user?.userId} type='generate' />
+                )}
             </div>
         </div>
     </div>
