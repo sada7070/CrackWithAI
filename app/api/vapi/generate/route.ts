@@ -13,15 +13,6 @@ const generateSchema = z.object({
     num_of_questions: z.string(),
 }) 
 
-export async function GET() {
-    return Response.json({
-        succuss: true,
-        data: "Thank you"
-    },{
-        status:200,
-    });
-}
-
 export async function POST(req: NextRequest) {
     const body = await req.json();
 

@@ -81,18 +81,27 @@ const Agent = ({userName, userId, type}: AgentProps) => {
         }
     },[messages, callStatus, type, userId]);
     
+    // to handle calls
     const handleCall = async() => {
         setCallStatus(CallStatus.CONNECTING);
 
         //telling vapi to connect
-        await vapi.start(process.env.NEXT_PUBLIC_VAPI_TOKEN!);
+        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+            variableValues: {
+                username: userName,
+                userid: userId
+            }
+        });
     }
 
     const handleDisconnect = async() => {
+        setCallStatus(CallStatus.FINISHED);
 
+        vapi.stop();
     }
 
-    const lastMessage = messages[messages.length - 1];
+    const latestMessage = messages[messages.length - 1]?.content;
+    const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
 
     return <div>
         <div className="flex sm:flex-row flex-col gap-20 items-center justify-center w-full">
@@ -121,8 +130,8 @@ const Agent = ({userName, userId, type}: AgentProps) => {
         {messages.length > 0 && (
             <div className=" bg-gradient-to-b from-[#aebbea] to-[#0a52bf] dark:bg-gradient-to-b dark:from-slate-50 dark:to-slate-400 p-0.5 rounded-2xl w-full mt-8">
                 <div className="bg-gradient-to-b from-[#f2f3f6] to-[#70a4f1] dark:bg-gradient-to-b dark:from-slate-400 dark:to-slate-800 rounded-2xl text-lg min-h-12 px-5 py-3 flex items-center justify-center">
-                    <p key={lastMessage} className={cn('transition-opacity duration-500 opacity-0', 'animation: fadeIn 0.5s ease-in-out opacity-100')}>
-                        {lastMessage}
+                    <p key={latestMessage} className={cn('transition-opacity duration-500 opacity-0', 'animation: fadeIn 0.5s ease-in-out opacity-100')}>
+                        {latestMessage}
                     </p>
                 </div>
             </div>
@@ -130,14 +139,14 @@ const Agent = ({userName, userId, type}: AgentProps) => {
 
         <div className="flex justify-center w-full mt-5">
                     {callStatus != 'INACTIVE' ? (
-                        <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl">
-                            <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' & 'hidden')}/>
+                        <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl" onClick={handleCall}>
+                            <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' && 'hidden')}/>
                             <span>
-                                {callStatus === 'INACTIVE' || callStatus === 'FINISHED' ? 'Call' : '...'}
+                                {isCallInactiveOrFinished ? 'Call' : '. . .'}
                             </span>
                         </Button>
                     ): (
-                        <Button variant='destructive' size='lg' className="w-25 rounded-4xl">
+                        <Button variant='destructive' size='lg' className="w-25 rounded-4xl" onClick={handleDisconnect}>
                             End
                         </Button>
                     )}
