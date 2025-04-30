@@ -96,7 +96,6 @@ const Agent = ({userName, userId, type}: AgentProps) => {
 
     const handleDisconnect = async() => {
         setCallStatus(CallStatus.FINISHED);
-
         vapi.stop();
     }
 
@@ -138,7 +137,7 @@ const Agent = ({userName, userId, type}: AgentProps) => {
         )}
 
         <div className="flex justify-center w-full mt-5">
-                    {callStatus != 'INACTIVE' ? (
+                    {callStatus != 'ACTIVE' ? (
                         <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl" onClick={handleCall}>
                             <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' && 'hidden')}/>
                             <span>

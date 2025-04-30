@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from 'react-hot-toast';
 
 export function SignupPage() {
     const [firstName, setFirstName] = useState("");
@@ -42,7 +43,7 @@ export function SignupPage() {
                 <h3 className="pt-2">Password</h3>
                 <Input onChange={(e) => {
                     setPassword(e.target.value);
-                }} placeholder="********" />
+                }} type="password" placeholder="********" />
 
                 <p className="text-sm pt-2"> Already have an account?
                     <Link href='/signin'>
@@ -51,15 +52,23 @@ export function SignupPage() {
                 </p>
             </div>
             <div className="pt-2">
-                <Button onClick={async() => {
-                    const res = await axios.post('/api/auth/signup', {
-                        firstName,
-                        lastName,
-                        email,
-                        password,
-                    });
-                    localStorage.setItem('token', res.data.token);
-                    router.push('/dashboard');
+                <Button
+                  disabled={!firstName || !lastName || !email || !password}
+                    onClick={async() => {
+                        try{
+                            const res = await axios.post('/api/auth/signup', {
+                                firstName,
+                                lastName,
+                                email,
+                                password,
+                            });
+                            localStorage.setItem('token', res.data.token);
+                            toast.success("Signup successful!");
+                            router.push('/dashboard');
+                        } catch(err) {
+                            console.error("Signup failed:", err);
+                            toast.error("Signup failed. Please check your details.");
+                        }
                 }} className="cursor-pointer w-full">Singup</Button>
             </div>
         </div>  

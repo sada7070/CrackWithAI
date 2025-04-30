@@ -7,6 +7,7 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import { useRouter } from "next/navigation"
 import axios from "axios";
+import toast from 'react-hot-toast';
 
 export function SigninPage() {
     const [email, setEmail] = useState("");
@@ -37,13 +38,22 @@ export function SigninPage() {
                 </p>
             </div>
             <div className="pt-2">
-                <Button onClick={async() => {
-                    const res = await axios.post('/api/auth/signin', {
-                        email,
-                        password,
-                    });
-                    localStorage.setItem('token', res.data.token);
-                    router.push("/dashboard");``
+                <Button 
+                disabled={!email || !password}
+                onClick={async() => {
+                    try{
+                        const res = await axios.post('/api/auth/signin', {
+                            email,
+                            password,
+                        });
+                        localStorage.setItem('token', res.data.token);
+                        toast.success("Signup successful!");
+                        router.push("/dashboard");
+                    } catch(err) {
+                        console.error("Signup failed:", err);
+                        toast.error("Signup failed. Please check your details.");
+                    
+                    }
                 }} className="cursor-pointer">Singin</Button>
             </div>
         </div>  
