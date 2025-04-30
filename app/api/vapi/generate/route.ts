@@ -14,7 +14,7 @@ const generateSchema = z.object({
 });
 
 export function GET() {
-    Response.json({
+    return Response.json({
         message: "succuss"
     },{
         status:200,
