@@ -11,7 +11,15 @@ const generateSchema = z.object({
     level: z.string(),
     techStack: z.string(),
     num_of_questions: z.string(),
-}) 
+});
+
+export function GET() {
+    Response.json({
+        message: "succuss"
+    },{
+        status:200,
+    });
+}
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
