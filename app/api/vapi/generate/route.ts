@@ -16,8 +16,8 @@ export async function POST(request: Request) {
     const req = request as NextRequest;
 
     const { type, role, level, techstack, num_of_questions } = await request.json();
-    // const { userId } = await userMiddleware(req);
-    // console.log("userid is:", userId);
+    const { userId } = await userMiddleware(req);
+    console.log("userid is:", userId);
 
     // if(!userId) {
     //     return NextResponse.json({
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
                     Thank you!
                 `,
         });
-        
+
         // adding everything to db so it csn be used later to take interview.
         await prismaClient.generate.create({
             data: {
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId: "ad3e8bc1-8251-4558-95de-d3ea4e6c950e",
+                userId: userId!,
             }
         });
 
