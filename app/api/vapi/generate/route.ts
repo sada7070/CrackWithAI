@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     const { type, role, level, techstack, num_of_questions } = await request.json();
     const { userId } = await userMiddleware(req);
-    console.log(userId);
+    console.log("userid is:", userId);
 
     if(!userId) {
         return NextResponse.json({
