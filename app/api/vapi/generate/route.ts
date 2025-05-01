@@ -1,18 +1,8 @@
 import { generateText } from "ai";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { google } from "@ai-sdk/google";
 import { userMiddleware } from "../../middleware/userAuth/route";
 import { prismaClient } from "@/app/lib/db";
-import useUser from "../../hooks/useUser";
-
-// const generateSchema = z.object({
-//     type: z.string(),
-//     role: z.string(),
-//     level: z.string(),
-//     techStack: z.string(),
-//     num_of_questions: z.string(),
-// });
 
 export function GET() {
     return Response.json({
@@ -22,9 +12,12 @@ export function GET() {
     });
 }
 
-export async function POST(request: Request, req: NextRequest) {
+export async function POST(request: Request) {
+    const req = request as NextRequest;
+
     const { type, role, level, techstack, num_of_questions } = await request.json();
     const { userId } = await userMiddleware(req);
+    console.log(userId);
 
     if(!userId) {
         return NextResponse.json({
@@ -33,29 +26,6 @@ export async function POST(request: Request, req: NextRequest) {
             status: 401,
         });
     }
-
-
-    // const body = await req.json();
-
-    // const parsedData = generateSchema.safeParse(body);
-
-    // if(!parsedData.success) {
-    //     return NextResponse.json({
-    //         error : parsedData.error.flatten().fieldErrors,
-    //     }, {
-    //         status: 422,
-    //     });
-    // }
-
-    // const { userId } = await userMiddleware(req);
-
-    // if(!userId){
-    //     return NextResponse.json({
-    //         message: "Invalid token."
-    //     }, {
-    //         status: 500,
-    //     });
-    // }
 
     // asking gemini to generate interview questions based on the given data.
     try{

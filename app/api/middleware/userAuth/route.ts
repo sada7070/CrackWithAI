@@ -24,4 +24,4 @@ export async function userMiddleware(req: NextRequest): Promise<AuthenticatedReq
             userId: undefined
         }
     }
-}
+}``
