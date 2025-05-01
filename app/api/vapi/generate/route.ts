@@ -56,7 +56,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId,
+                userId: "ad3e8bc1-8251-4558-95de-d3ea4e6c950e",
             }
         });
 
