@@ -29,10 +29,10 @@ export async function GET(req: NextRequest) {
         });
     }
 
+    
     return NextResponse.json({
         message: "User found",
         firstName: response.firstName,
-        lastName: response.lastName,
         userId
     }, {
         status: 200,

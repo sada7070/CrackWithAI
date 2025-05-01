@@ -6,24 +6,22 @@ export interface AuthenticatedRequestData {
   }
 
 export async function userMiddleware(req: NextRequest): Promise<AuthenticatedRequestData> {
-    const token = req.headers.get("authorization");
+    const token = req.headers.get("Authorization");
 
     if (!token) {
-        throw new Response(JSON.stringify({ 
-            message: "Unauthorized. No token."
-        }), { 
-            status: 403
-        });
+        return {
+            userId: undefined
+        }
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
-        return { userId: decoded.userId };
+        return {
+            userId: decoded.userId
+        };
     } catch (error) {
-        throw new Response(JSON.stringify({
-            message: "Unauthorized. Invalid token."
-        }), {
-            status: 403
-        });
+        return {
+            userId: undefined
+        }
     }
 }

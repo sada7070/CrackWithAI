@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
 
 interface AgentProps {
-    userName: string;
+    firstName: string;
     userId?: string;
     interviewId?: string;
     feedbackId?: string;
@@ -29,7 +29,7 @@ interface SavedMessage {
 }
 
 
-const Agent = ({userName, userId, type}: AgentProps) => {
+const Agent = ({firstName, userId, type}: AgentProps) => {
     const router = useRouter();
 
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -88,7 +88,7 @@ const Agent = ({userName, userId, type}: AgentProps) => {
         //telling vapi to connect
         await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
             variableValues: {
-                username: userName,
+                firstName: firstName,
                 userid: userId
             }
         });
@@ -97,10 +97,12 @@ const Agent = ({userName, userId, type}: AgentProps) => {
     const handleDisconnect = async() => {
         setCallStatus(CallStatus.FINISHED);
         vapi.stop();
+        router.push('/dashboard');
     }
 
     const latestMessage = messages[messages.length - 1]?.content;
     const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
+    const userName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
     return <div>
         <div className="flex sm:flex-row flex-col gap-20 items-center justify-center w-full">

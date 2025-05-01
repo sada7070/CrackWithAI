@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 export default function Interview() {
     type User = {
         firstName: string;
-        lastName: string;
         userId: string;
     }
     const [user, setUser] = useState<User | null>(null);
@@ -26,7 +25,6 @@ export default function Interview() {
                     },
                 });
                 setUser(res.data)
-                console.log(res.data);
             } catch(e){
                 console.log(e);
             }
@@ -41,7 +39,7 @@ export default function Interview() {
             <p className="text-4xl mb-6 font-bold flex justify-center items-center md:justify-start">Interview Generation</p>
             <div>
                 {user && (
-                    <Agent userName={user?.firstName} userId={user?.userId} type='generate' />
+                    <Agent firstName={user?.firstName} userId={user?.userId} type='generate' />
                 )}
             </div>
         </div>
