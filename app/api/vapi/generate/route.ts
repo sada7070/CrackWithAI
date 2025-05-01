@@ -1,3 +1,5 @@
+"use client";
+
 import { generateText } from "ai";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
