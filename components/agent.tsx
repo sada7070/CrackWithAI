@@ -30,7 +30,6 @@ interface SavedMessage {
 
 
 const Agent = ({firstName, userId, type}: AgentProps) => {
-    if(!userId) return;
     const router = useRouter();
 
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -90,7 +89,7 @@ const Agent = ({firstName, userId, type}: AgentProps) => {
         await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
             variableValues: {
                 userName: firstName,
-                userId: userId,
+                userId,
             }
         });
     }
