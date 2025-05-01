@@ -1,5 +1,3 @@
-"use client";
-
 import { generateText } from "ai";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -24,9 +22,18 @@ export function GET() {
     });
 }
 
-export async function POST(request: Request) {
-    const user = useUser();
+export async function POST(request: Request, req: NextRequest) {
     const { type, role, level, techstack, num_of_questions } = await request.json();
+    const { userId } = await userMiddleware(req);
+
+    if(!userId) {
+        return NextResponse.json({
+            message: "Unauthorized"
+        }, {
+            status: 401,
+        });
+    }
+
 
     // const body = await req.json();
 
@@ -79,7 +86,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId: user?.userId!,
+                userId,
             }
         });
 
