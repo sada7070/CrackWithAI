@@ -88,8 +88,8 @@ const Agent = ({firstName, userId, type}: AgentProps) => {
         //telling vapi to connect
         await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
             variableValues: {
-                firstName: firstName,
-                userid: userId
+                userName: firstName,
+                userId
             }
         });
     }
