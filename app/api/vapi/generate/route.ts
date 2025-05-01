@@ -16,16 +16,16 @@ export async function POST(request: Request) {
     const req = request as NextRequest;
 
     const { type, role, level, techstack, num_of_questions } = await request.json();
-    const { userId } = await userMiddleware(req);
-    console.log("userid is:", userId);
+    // const { userId } = await userMiddleware(req);
+    // console.log("userid is:", userId);
 
-    if(!userId) {
-        return NextResponse.json({
-            message: "Unauthorized"
-        }, {
-            status: 401,
-        });
-    }
+    // if(!userId) {
+    //     return NextResponse.json({
+    //         message: "Unauthorized"
+    //     }, {
+    //         status: 401,
+    //     });
+    // }
 
     // asking gemini to generate interview questions based on the given data.
     try{
