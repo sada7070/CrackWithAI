@@ -4,14 +4,15 @@ import { z } from "zod";
 import { google } from "@ai-sdk/google";
 import { userMiddleware } from "../../middleware/userAuth/route";
 import { prismaClient } from "@/app/lib/db";
+import useUser from "../../hooks/useUser";
 
-const generateSchema = z.object({
-    type: z.string(),
-    role: z.string(),
-    level: z.string(),
-    techStack: z.string(),
-    num_of_questions: z.string(),
-});
+// const generateSchema = z.object({
+//     type: z.string(),
+//     role: z.string(),
+//     level: z.string(),
+//     techStack: z.string(),
+//     num_of_questions: z.string(),
+// });
 
 export function GET() {
     return Response.json({
@@ -22,7 +23,8 @@ export function GET() {
 }
 
 export async function POST(request: Request) {
-    const { type, role, level, techstack, num_of_questions, userId } = await request.json();
+    const user = useUser();
+    const { type, role, level, techstack, num_of_questions } = await request.json();
 
     // const body = await req.json();
 
@@ -67,7 +69,7 @@ export async function POST(request: Request) {
         });
         
         // adding everything to db so it csn be used later to take interview.
-        const aiResponse = await prismaClient.generate.create({
+        await prismaClient.generate.create({
             data: {
                 type: type,
                 role: role,
@@ -75,7 +77,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId
+                userId: user?.userId!,
             }
         });
 

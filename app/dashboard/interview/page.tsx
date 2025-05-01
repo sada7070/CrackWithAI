@@ -1,36 +1,11 @@
 "use client";
 
+import useUser from "@/app/api/hooks/useUser";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
-import axios from 'axios';
-import { useEffect, useState } from "react";
 
 export default function Interview() {
-    type User = {
-        firstName: string;
-        userId: string;
-    }
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        const fetchUser = async() => {
-            try{
-                const token = localStorage.getItem('token');
-                if(!token) {
-                    return;
-                }
-                const res = await axios.get('/api/user', {
-                    headers: {
-                        Authorization: token,
-                    },
-                });
-                setUser(res.data)
-            } catch(e){
-                console.log(e);
-            }
-        };
-        fetchUser()
-    },[]);  
+    const user = useUser();  
 
     return <div>
         <Header />
