@@ -15,9 +15,10 @@ export function GET() {
 export async function POST(request: Request) {
     const req = request as NextRequest;
 
-    const { type, role, level, techstack, num_of_questions } = await request.json();
-    const { userId } = await userMiddleware(req);
-    console.log("userid is:", userId);
+    const { type, role, level, techstack, num_of_questions, userId } = await request.json();
+    //const { userId } = await userMiddleware(req);
+    console.log(type, role, level, techstack, num_of_questions, userId);
+    console.log("userId: ", userId);
 
     // if(!userId) {
     //     return NextResponse.json({
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId: userId!,
+                userId: userId,
             }
         });
 
