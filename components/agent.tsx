@@ -79,7 +79,7 @@ const Agent = ({userName, userId, type}: AgentProps) => {
         if(callStatus === CallStatus.FINISHED) {
             router.push('/dashboard');
         }
-    },[messages, callStatus, type, userId]);
+    },[callStatus]);
     
     // to handle calls
     const handleCall = async() => {
