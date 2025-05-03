@@ -1,11 +1,10 @@
-"use client";
-
 import { getUserFromToken } from "@/app/lib/generalAuth";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
 
 export default async function Interview() {
-    const user = await getUserFromToken();  
+    const user = await getUserFromToken(); 
+    console.log(user);
 
     return <div>
         <Header />

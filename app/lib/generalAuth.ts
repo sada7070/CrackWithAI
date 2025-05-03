@@ -36,7 +36,7 @@ export async function getUserFromToken() {
   if (!token) return null
 
   try {
-    return jwt.verify(token, process.env.JWT_SECRET!) as { userId: string, email: string, firstName: string }
+    return jwt.verify(token, process.env.JWT_SECRET!) as { userId: string, firstName: string }
   } catch (err) {
     return null
   }

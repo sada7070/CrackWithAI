@@ -47,7 +47,8 @@ export async function POST(req: NextRequest) {
     }
 
     const token = jwt.sign({
-        userId: userExist.id
+        userId: userExist.id,
+        firstName: userExist.firstName,
     }, process.env.JWT_SECRET!);
 
     const res = NextResponse.json({
