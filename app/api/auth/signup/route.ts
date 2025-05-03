@@ -14,7 +14,7 @@ const signupSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-    const body = await req.json()
+    const body = await req.json();
 
     const parsedData = signupSchema.safeParse(body);
 
@@ -38,14 +38,8 @@ export async function POST(req: NextRequest) {
             }
         });
 
-        // generate JWT
-        const token = jwt.sign({
-            userId: user.id,
-        }, process.env.JWT_SECRET!);
-
         return NextResponse.json({
             message: "Signup succussful.",
-            token
         }, {
             status: 200
         });

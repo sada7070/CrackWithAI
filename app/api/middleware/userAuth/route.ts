@@ -6,7 +6,7 @@ export interface AuthenticatedRequestData {
   }
 
 export async function userMiddleware(req: NextRequest): Promise<AuthenticatedRequestData> {
-    const token = req.headers.get("Authorization");
+    const token = req.headers.get("authorization");
 
     if (!token) {
         return {

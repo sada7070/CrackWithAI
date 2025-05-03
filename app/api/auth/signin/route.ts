@@ -50,10 +50,18 @@ export async function POST(req: NextRequest) {
         userId: userExist.id
     }, process.env.JWT_SECRET!);
 
-    return NextResponse.json({
-        message: "Signin succussful.",
-        token
+    const res = NextResponse.json({
+        success: true
     }, {
-        status: 200
+        status: 200,
     });
+
+    res.cookies.set('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 3600,
+        path: '/',
+    });
+
+    return res;
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import useUser from "@/app/api/hooks/useUser";
+import { getUserFromToken } from "@/app/lib/generalAuth";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
 
-export default function Interview() {
-    const user = useUser();  
+export default async function Interview() {
+    const user = await getUserFromToken();  
 
     return <div>
         <Header />
@@ -14,7 +14,7 @@ export default function Interview() {
             <p className="text-4xl mb-6 font-bold flex justify-center items-center md:justify-start">Interview Generation</p>
             <div>
                 {user && (
-                    <Agent firstName={user?.firstName} userId={user?.userId} type='generate' />
+                    <Agent firstName={user.firstName} userId={user?.userId} type='generate' />
                 )}
             </div>
         </div>

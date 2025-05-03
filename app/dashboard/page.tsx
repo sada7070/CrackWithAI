@@ -1,10 +1,19 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
 import Image from "next/image";
-import { dummyInterviews } from "../lib";
+import { getInterviewsByUserId } from "../lib/generalAuth";
 import InterviewCard from "@/components/interviewCard";
+import { getUserFromToken } from "../lib/generalAuth";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+    const user = await getUserFromToken();
+    if(!user) {
+        return <p>Not authorized.</p>
+    }
+    
+    const userInterviews = await getInterviewsByUserId(user.userId);
+    const hasPastInterview = userInterviews?.length! > 0;
+
     return <div>
         <Header />
 
@@ -47,9 +56,14 @@ export default function Dashboard() {
                 <h2 className="text-4xl pb-6">Your Interviews</h2>
 
                 <div className="flex flex-wrap gap-10 max-lg:flex-col w-full items-stretch pb-20">
-                    {dummyInterviews.map((interview) => (
-                        <InterviewCard {...interview} key={interview.id} />
-                    ))}
+                    {hasPastInterview ? (
+                        userInterviews?.map((interview) => (
+                            <InterviewCard {...interview} key={interview.id} />
+                        ))
+                    ) : (
+                        <p>You haven't taken any interview yet</p>
+                    )
+                    }
                 </div>
             </div>
         </section>

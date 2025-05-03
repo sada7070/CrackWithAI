@@ -47,11 +47,11 @@ export function SigninPage() {
                             password,
                         });
                         localStorage.setItem('token', res.data.token);
-                        toast.success("Signup successful!");
+                        toast.success("Signin successful!");
                         router.push("/dashboard");
                     } catch(err) {
                         console.error("Signup failed:", err);
-                        toast.error("Signup failed. Please check your details.");
+                        toast.error("Signin failed. Please check your details.");
                     
                     }
                 }} className="cursor-pointer">Singin</Button>

@@ -64,7 +64,7 @@ export function SignupPage() {
                             });
                             localStorage.setItem('token', res.data.token);
                             toast.success("Signup successful!");
-                            router.push('/dashboard');
+                            router.push('/signin');
                         } catch(err) {
                             console.error("Signup failed:", err);
                             toast.error("Signup failed. Please check your details.");
