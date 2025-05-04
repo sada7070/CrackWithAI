@@ -7,14 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum CategoryName {
-  Communication_Skills
-  Technical_Knowledge
-  Problem_solving
-  Cultutal_fit
-  Confidance_and_Clarity
-}
-
 model User {
   id                  String          @id          @default(uuid())
   email               String          @unique
@@ -37,23 +29,23 @@ model Generate {
   user                User                         @relation(fields: [userId], references: [id])
 }
 
+model CategoryScore {
+  id                  String           @id         @default(uuid())
+  name                String
+  score               Int
+  comment             String
+  feedbackId          String
+  feedback            Feedback                     @relation(fields: [feedbackId], references: [id])
+}
+
 model Feedback {
   id                  String           @id         @default(uuid())
   interviewId         String
   userId              String
   totalScore          Int
-  categoryScores      CategorySocre[]
+  categoryScores      CategoryScore[]
   strengths           String[]
   areasForImprovement String[]
   finalAssessment     String
   createdAt           DateTime                     @default(now())
-}
-
-model CategorySocre {
-  id                  String           @id         @default(uuid())
-  name                CategoryName
-  score               Int
-  comment             String
-  feedbackId          String
-  feedback            Feedback                     @relation(fields: [feedbackId], references: [id])
 }
