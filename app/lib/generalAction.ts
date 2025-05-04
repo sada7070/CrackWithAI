@@ -11,6 +11,7 @@ interface Interview {
     type: string;
 }
 
+// to get all the interviews by userId
 export async function getInterviewsByUserId(userId: string): Promise<Interview[] | null> {
     const interviews = await prismaClient.generate.findMany({
         where: {
@@ -21,7 +22,7 @@ export async function getInterviewsByUserId(userId: string): Promise<Interview[]
         }
     });
 
-    return interviews as unknown as Interview[];
+    return interviews as unknown as Interview[] | null;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------------- */
@@ -40,4 +41,18 @@ export async function getUserFromToken() {
   } catch (err) {
     return null
   }
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------------------- */
+
+// to get a specific interview by its id
+export async function getInterviewById(id: string): Promise<Interview |null> {
+    const interview = await prismaClient.generate.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return interview as unknown as Interview | null;
 }

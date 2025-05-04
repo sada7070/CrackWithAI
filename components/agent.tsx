@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
+import { interviewer } from "@/constants";
 
 interface AgentProps {
     firstName: string;
@@ -29,7 +30,7 @@ interface SavedMessage {
 }
 
 
-const Agent = ({firstName, userId, type}: AgentProps) => {
+const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) => {
     const router = useRouter();
 
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -75,23 +76,57 @@ const Agent = ({firstName, userId, type}: AgentProps) => {
 
     },[]);
 
-    useEffect(() => {
-        if(callStatus === CallStatus.FINISHED) {
+    const handleGenerateFeedback = async(messages: SavedMessage[]) => {
+        console.log("generate feedback here");
+
+        const { success, id } = {
+            success: true,
+            id: 'feedback-id'
+        }
+
+        if(success && id) {
+            router.push(`/dashboard/interview/${interviewId}/feedback`);
+        } else {
+            console.log("error saving feedback");
             router.push('/dashboard');
         }
-    },[callStatus]);
+    }
+
+    useEffect(() => {
+        if(callStatus === CallStatus.FINISHED) {
+            if(type === 'generate') {
+                router.push('/dashboard');
+            } else {
+                handleGenerateFeedback(messages);
+            }
+        }
+    },[callStatus, messages, type, userId]);
     
     // to handle calls
     const handleCall = async() => {
         setCallStatus(CallStatus.CONNECTING);
 
-        //telling vapi to connect
-        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
-            variableValues: {
-                userName: firstName,
-                userId,
+        if(type === 'generate') {
+            //telling vapi to connect
+            await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+                variableValues: {
+                    userName: firstName,
+                    userId,
+                }
+            });
+        } else {
+            let formattedQuestions = '';
+
+            if(questions) {
+                formattedQuestions = questions.map((question) => `- ${question}`).join('\n');
             }
-        });
+
+            await vapi.start(interviewer, {
+                variableValues: {
+                    questions: formattedQuestions
+                }
+            })
+        }
     }
 
     const handleDisconnect = async() => {
@@ -138,7 +173,7 @@ const Agent = ({firstName, userId, type}: AgentProps) => {
             </div>
         )}
 
-        <div className="flex justify-center w-full mt-5">
+        <div className="flex justify-center w-full mt-10">
                     {callStatus != 'ACTIVE' ? (
                         <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl" onClick={handleCall}>
                             <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' && 'hidden')}/>
