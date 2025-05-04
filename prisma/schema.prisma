@@ -7,9 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum CategoryName {
+  Communication_Skills
+  Technical_Knowledge
+  Problem_solving
+  Cultutal_fit
+  Confidance_and_Clarity
+}
+
 model User {
-  id                  String      @id          @default(uuid())
-  email               String      @unique
+  id                  String          @id          @default(uuid())
+  email               String          @unique
   password            String
   firstName           String
   lastName            String
@@ -17,8 +25,8 @@ model User {
 }
 
 model Generate {
-  id                  String      @id          @default(uuid())
-  createdAt           DateTime                 @default(now())
+  id                  String           @id         @default(uuid())
+  createdAt           DateTime                     @default(now())
   questions           Json
   type                String
   role                String
@@ -26,16 +34,26 @@ model Generate {
   techStack           String
   num_of_questions    String
   userId              String
-  user                User                     @relation(fields: [userId], references: [id])
+  user                User                         @relation(fields: [userId], references: [id])
 }
 
 model Feedback {
-  id                  String      @id          @default(uuid())
+  id                  String           @id         @default(uuid())
   interviewId         String
   userId              String
   totalScore          Int
-  categoryScores      Int
-  areasForImprovement String
+  categoryScores      CategorySocre[]
+  strengths           String[]
+  areasForImprovement String[]
   finalAssessment     String
-  createdAt           DateTime                 @default(now())
+  createdAt           DateTime                     @default(now())
+}
+
+model CategorySocre {
+  id                  String           @id         @default(uuid())
+  name                CategoryName
+  score               Int
+  comment             String
+  feedbackId          String
+  feedback            Feedback                     @relation(fields: [feedbackId], references: [id])
 }
