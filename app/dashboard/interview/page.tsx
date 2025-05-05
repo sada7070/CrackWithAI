@@ -1,4 +1,4 @@
-import { getUserFromToken } from "@/app/lib/generalAction";
+import { getUserFromToken } from "@/app/lib/getUserFromToken";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
 

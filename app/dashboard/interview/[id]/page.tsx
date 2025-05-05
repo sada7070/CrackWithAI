@@ -1,4 +1,5 @@
-import { getInterviewById, getUserFromToken } from "@/app/lib/generalAction";
+import { getInterviewById }from "@/app/lib/generalAction";
+import { getUserFromToken } from "@/app/lib/getUserFromToken";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
 import { redirect } from "next/navigation";
