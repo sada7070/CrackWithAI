@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
-import { createFeedback } from "@/app/lib/generalAction";
+import { createFeedback } from "@/app/lib/createFeedback";
 
 interface AgentProps {
     firstName: string;
@@ -78,8 +78,6 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
     },[]);
 
     const handleGenerateFeedback = async(messages: SavedMessage[]) => {
-        console.log("generate feedback here");
-
         const { success, feedbackId: id } = await createFeedback({
             interviewId: interviewId!,
             userId: userId!,

@@ -3,7 +3,7 @@ import { Header } from "@/components/ui/header";
 import Image from "next/image";
 import { getInterviewsByUserId } from "@/app/lib/generalAction";
 import InterviewCard from "@/components/interviewCard";
-import { getUserFromToken } from "@/app/lib/getUserFromToken";
+import { getUserFromToken } from "@/app/lib/generalAction";
 
 export default async function Dashboard() {
     const user = await getUserFromToken();

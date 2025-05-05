@@ -1,5 +1,5 @@
 import { getInterviewById }from "@/app/lib/generalAction";
-import { getUserFromToken } from "@/app/lib/getUserFromToken";
+import { getUserFromToken } from "@/app/lib/generalAction";
 import Agent from "@/components/agent";
 import { Header } from "@/components/ui/header";
 import { redirect } from "next/navigation";
@@ -39,7 +39,7 @@ const TakeInterview = async({ params }: RouteParams) => {
             <Agent
                 firstName={user?.firstName}
                 userId={user?.userId}
-                type="interview"
+                type='interview'
                 interviewId={interview.id}
                 questions={interview.questions}
             />
