@@ -31,7 +31,7 @@ interface SavedMessage {
 }
 
 
-const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) => {
+const Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) => {
     const router = useRouter();
 
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -102,7 +102,6 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
         }
     },[callStatus, messages, type, userId]);
     
-    console.log("1", userId);
     // to handle calls
     const handleCall = async() => {
         setCallStatus(CallStatus.CONNECTING);
@@ -131,7 +130,7 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
     }
 
     const handleDisconnect = async() => {
-        setCallStatus(CallStatus.FINISHED);
+        setCallStatus(CallStatus.FINISHED || CallStatus.INACTIVE);
         vapi.stop();
         router.push('/dashboard');
     }
@@ -177,7 +176,9 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
         <div className="flex justify-center w-full mt-10">
                     {callStatus != 'ACTIVE' ? (
                         <Button size='lg' className="bg-green-500 hover:bg-green-400 w-25 rounded-4xl" onClick={handleCall}>
-                            <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus != 'CONNECTING' && 'hidden')}/>
+                            <span className={cn('absolute animate-ping rounded-full opacity-75',
+                                  callStatus !== 'CONNECTING' && 'hidden')}
+                            />
                             <span>
                                 {isCallInactiveOrFinished ? 'Call' : '. . .'}
                             </span>

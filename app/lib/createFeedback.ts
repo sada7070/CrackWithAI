@@ -1,3 +1,5 @@
+"use server";
+
 import { generateObject } from "ai";
 import { google } from "@ai-sdk/google";
 import { feedbackSchema } from "@/constants";
@@ -17,8 +19,6 @@ export async function createFeedback(params: CreateFeedbackParams) {
     const formattedTranscript = transcript.map((sentence: { role: string, content: string}) => (
       `- ${sentence.role}: ${sentence.content}\n`
     )).join('');
-
-    console.log(process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY);
 
     const { object: { totalScore, categoryScores, strengths, areasForImprovement, finalAssessment }} = await generateObject({
       model: google('gemini-2.0-flash-001', {
@@ -41,9 +41,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
       system:
         "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
     });
-    console.log("hi");
-    console.log(totalScore, categoryScores, strengths, areasForImprovement, finalAssessment);
-
+    
     const feedback = await prismaClient.feedback.create({
       data: {
         interviewId,
@@ -58,7 +56,6 @@ export async function createFeedback(params: CreateFeedbackParams) {
       }
     });
 
-    console.log(feedback);
 
     return {
       success: true,

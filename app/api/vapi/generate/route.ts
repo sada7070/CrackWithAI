@@ -2,7 +2,6 @@ import { generateText } from "ai";
 import { NextResponse } from "next/server";
 import { google } from "@ai-sdk/google";
 import { prismaClient } from "@/app/lib/db";
-import { getUserFromToken } from "@/app/lib/generalAction";
 
 export function GET() {
     return Response.json({
@@ -14,8 +13,8 @@ export function GET() {
 
 export async function POST(request: Request) {
     // The destructured values come from the JSON data that the client includes in the body of the POST request.
-    const { type, role, level, techstack, num_of_questions,userId } = await request.json();
-    console.log("hi");
+    const { type, role, level, techstack, num_of_questions, userId } = await request.json();
+    console.log(type, role, level, techstack, num_of_questions, userId);
 
     // asking gemini to generate interview questions based on the given data.
     try{
@@ -37,7 +36,6 @@ export async function POST(request: Request) {
                 `,
         });
 
-        console.log(userId);
         // adding everything to db so it csn be used later to take interview.
         const res = await prismaClient.generate.create({
             data: {
