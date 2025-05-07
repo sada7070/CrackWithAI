@@ -102,6 +102,7 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
         }
     },[callStatus, messages, type, userId]);
     
+    console.log("1", userId);
     // to handle calls
     const handleCall = async() => {
         setCallStatus(CallStatus.CONNECTING);
@@ -111,7 +112,7 @@ const   Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) 
             await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
                 variableValues: {
                     userName: firstName,
-                    userId,
+                    userId: userId,
                 }
             });
         } else {

@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
     }, process.env.JWT_SECRET!);
 
     const res = NextResponse.json({
-        success: true
+        success: true,
+        token,
     }, {
         status: 200,
     });

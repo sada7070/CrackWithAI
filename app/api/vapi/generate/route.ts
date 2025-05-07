@@ -14,6 +14,7 @@ export function GET() {
 export async function POST(request: Request) {
     // The destructured values come from the JSON data that the client includes in the body of the POST request.
     const { type, role, level, techstack, num_of_questions, userId } = await request.json();
+    console.log("hi");
 
     // asking gemini to generate interview questions based on the given data.
     try{
@@ -35,8 +36,9 @@ export async function POST(request: Request) {
                 `,
         });
 
+        console.log(userId);
         // adding everything to db so it csn be used later to take interview.
-        await prismaClient.generate.create({
+        const res = await prismaClient.generate.create({
             data: {
                 type: type,
                 role: role,
@@ -47,6 +49,8 @@ export async function POST(request: Request) {
                 userId,
             }
         });
+
+        console.log(res.userId);
 
         return NextResponse.json({
             message: "success", 
