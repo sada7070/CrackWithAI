@@ -12,12 +12,9 @@ export function GET() {
     });
 }
 
-const user = await getUserFromToken();
-const userId = user?.userId!;
-
 export async function POST(request: Request) {
     // The destructured values come from the JSON data that the client includes in the body of the POST request.
-    const { type, role, level, techstack, num_of_questions } = await request.json();
+    const { type, role, level, techstack, num_of_questions,userId } = await request.json();
     console.log("hi");
 
     // asking gemini to generate interview questions based on the given data.
