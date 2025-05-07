@@ -2,6 +2,7 @@ import { generateText } from "ai";
 import { NextResponse } from "next/server";
 import { google } from "@ai-sdk/google";
 import { prismaClient } from "@/app/lib/db";
+import { getUserFromToken } from "@/app/lib/generalAction";
 
 export function GET() {
     return Response.json({
@@ -11,9 +12,12 @@ export function GET() {
     });
 }
 
+const user = await getUserFromToken();
+const userId = user?.userId!;
+
 export async function POST(request: Request) {
     // The destructured values come from the JSON data that the client includes in the body of the POST request.
-    const { type, role, level, techstack, num_of_questions, userId } = await request.json();
+    const { type, role, level, techstack, num_of_questions } = await request.json();
     console.log("hi");
 
     // asking gemini to generate interview questions based on the given data.
@@ -46,7 +50,7 @@ export async function POST(request: Request) {
                 techStack: techstack,
                 num_of_questions: num_of_questions,
                 questions: JSON.parse(questions),
-                userId,
+                userId
             }
         });
 
