@@ -1,3 +1,4 @@
+import { SimpleCard } from "@/components/ui/simpleCard";
 import { Play } from "lucide-react";
 import Image from "next/image";
 
@@ -16,35 +17,22 @@ export function HowItWorks(){
                 </div>
             </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 mt-12">
-            <div className="flex flex-col items-center space-y-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white dark:text-black text-2xl font-bold">
-                    1
-                </div>
-                <h3 className="text-xl font-bold">Create Your Profile</h3>
-                <p className="text-center text-gray-500">
-                    Tell us about your industry, target role, and experience level so we can customize your practice
-                    sessions.
-                </p>
-            </div>
-            <div className="flex flex-col items-center space-y-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white dark:text-black text-2xl font-bold">
-                    2
-                </div>
-                <h3 className="text-xl font-bold">Practice with AI</h3>
-                <p className="text-center text-gray-500">
-                    Engage in realistic interview conversations with our AI voice agent that responds to your answers.
-                </p>
-            </div>
-            <div className="flex flex-col items-center space-y-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white dark:text-black text-2xl font-bold">
-                    3
-                </div>
-                <h3 className="text-xl font-bold">Review & Improve</h3>
-                <p className="text-center text-gray-500">
-                    Get detailed feedback on your performance and specific suggestions for improvement.
-                </p>
-            </div>
+            <SimpleCard num={1}
+                  label="Create Your Profile"
+                  content="Tell us about your industry, target role, and experience level so we can customize your practice sessions."
+            />
+
+            <SimpleCard num={2}
+                  label="Practice with AI"
+                  content="Engage in realistic interview conversations with our AI voice agent that responds to your answers."
+            />
+
+            <SimpleCard num={3}
+                  label="Review & Improve"
+                  content="Get detailed feedback on your performance and specific suggestions for improvement."
+            />
         </div>
+        
         <div className="mt-16 flex justify-center">
             <div className="relative rounded-lg overflow-hidden shadow-xl">
             <Image

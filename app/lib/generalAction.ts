@@ -133,7 +133,6 @@ export async function createFeedback(params: CreateFeedbackParams) {
 /*------------------------------------------------------------------------------------------------------------------------------ */
 
 import { Feedback } from "@/components/interviewCard";
-import { object } from "zod";
 
 interface GetFeedback {
   interviewId: string;

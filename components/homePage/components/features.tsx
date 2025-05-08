@@ -1,3 +1,4 @@
+import { FeaturesCard } from "@/components/ui/featuresCard";
 import { Award, Calendar, CheckCircle, Mic } from "lucide-react";
 
 export function Features() {
@@ -15,77 +16,74 @@ export function Features() {
           </p>
         </div>
       </div>
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <Mic className="h-12 w-12 text-primary" />
-          <h3 className="text-xl font-bold">AI Voice Interaction</h3>
-          <p className="text-center text-gray-500">
-            Practice with our realistic AI voice agent that responds to your answers in real-time.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <CheckCircle className="h-12 w-12 text-primary" />
-          <h3 className="text-xl font-bold">Instant Feedback</h3>
-          <p className="text-center text-gray-500">
-            Get detailed feedback on your responses, including content, delivery, and confidence.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <Calendar className="h-12 w-12 text-primary" />
-          <h3 className="text-xl font-bold">Scheduled Sessions</h3>
-          <p className="text-center text-gray-500">
-            Set up regular practice sessions to improve consistently over time.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <Award className="h-12 w-12 text-primary" />
-          <h3 className="text-xl font-bold">Industry-Specific Questions</h3>
-          <p className="text-center text-gray-500">
-            Practice with questions tailored to your industry, role, and experience level.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-12 w-12 text-primary"
-          >
-            <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
-            <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
-          </svg>
-          <h3 className="text-xl font-bold">Mock Interviews</h3>
-          <p className="text-center text-gray-500">
-            Simulate full interview experiences with varying difficulty levels.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-12 w-12 text-primary"
-          >
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-          </svg>
-          <h3 className="text-xl font-bold">Learning Resources</h3>
-          <p className="text-center text-gray-500">
-            Access a library of interview tips, common questions, and best practices.
-          </p>
-        </div>
+      < div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
+        <FeaturesCard 
+          label="AI Voice Interaction"
+          content=" Practice with our realistic AI voice agent that responds to your answers in real-time."
+          icon={<Mic className="h-12 w-12 text-primary" />}
+        />
+
+        <FeaturesCard
+          label="Instant Feedback"
+          content="Get detailed feedback on your responses, including content, delivery, and confidence."
+          icon={<CheckCircle className="h-12 w-12 text-primary" />}
+        />
+
+        <FeaturesCard
+          label="Interview History"
+          content="View past interviews, scores, feedback, and retake the interview."
+          icon={<Calendar className="h-12 w-12 text-primary" />}
+        />
+        
+        <FeaturesCard
+          label="Industry-Specific Questions"
+          content="Practice with questions tailored to your industry, role, and experience level."
+          icon={<Award className="h-12 w-12 text-primary" />}
+        />
+
+        <FeaturesCard
+          label="Mock Interviews"
+          content="Simulate full interview experiences with varying difficulty levels."
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-12 w-12 text-primary"
+            >
+              <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
+              <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
+            </svg>
+          }
+        />
+        
+        <FeaturesCard
+          label="Scoring System"
+          content="Evaluation of answers with categorical scores and suggestions for areas of improvement."
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-12 w-12 text-primary"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          }
+        />
       </div>
     </div>
   </section>
