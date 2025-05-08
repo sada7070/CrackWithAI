@@ -7,7 +7,7 @@ export function CTASection() {
       <div className="flex flex-col items-center justify-center space-y-8 text-center">
 
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-black">
+          <h2 className="text-4xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-black">
             Ready to Ace Your Next Interview?
           </h2>
           <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-black">
@@ -24,7 +24,7 @@ export function CTASection() {
           </Link>
             
           <Link href='signup'>
-            <Button size="lg" variant="outline" className="text-black border-white hover:bg-slate-500 dark:hover:bg-slate-800 dark:border-slate-950">
+            <Button size="lg" variant="outline" className="text-black border-white bg-slate-500 hover:bg-slate-400 dark:hover:bg-slate-800 dark:border-slate-950">
               SignUp
             </Button>
           </Link>

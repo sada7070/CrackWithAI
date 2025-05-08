@@ -6,7 +6,7 @@ export function HowItWorks(){
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
                     <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">How It Works</div>
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl md:pt-2">
+                    <h2 className="text-4xl font-bold tracking-tighter sm:text-4xl md:text-5xl md:pt-2">
                         Simple Steps to Interview Success
                     </h2>
                     <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
