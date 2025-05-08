@@ -32,15 +32,15 @@ const InterviewCard = async({ id, userId, role, type, createdAt}: InterviewCardP
     const normalizedType = /mix/gi.test(type) ? 'Mixed' : type;
     const formattedDate = dayjs(feedback?.createdAt || createdAt || Date.now()).format('D MMM, YYYY');
 
-    return <div className="bg-gradient-to-b from-blue-600 to-cyan-700 dar:bg-gradient-to-b dark:from-slate-300 dark:to-zinc-800 p-0.5 rounded-2xl w-[320px] max-sm:w-full min-h-94">
-        <div className="bg-gradient-to-b from-white to-blue-300 dark:bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-950 rounded-2xl mix-h-1/6 flex flex-col p-6 relative overflow-hidden gap-10 justify-between">
-            <div>
-                <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg bg-sky-400 dark:bg-indigo-800">
+    return <div className="bg-gradient-to-b from-slate-400  via-slate-800 to-slate-400 dark:bg-gradient-to-b dark:from-zinc-400 dark:via-slate-800 dark:to-slate-400 p-0.5 pt-0.75 rounded-2xl w-[320px] max-sm:w-full min-h-88">
+        <div className="bg-secondary dark:bg-gradient-to-b dark:from-zinc-950 dark:to-secondary/100 rounded-2xl mix-h-1/6 flex flex-col md:p-6 relative overflow-hidden gap-10 justify-between">
+            <div className="mx-2 md:mx-0">
+                <div className="absolute top-0 right-0 w-fit px-2 md:px-4 py-2 text-white rounded-bl-lg bg-primary dark:bg-slate-200 dark:text-black">
                     <p className="text-sm font-semibold capitalize">
                         {normalizedType}
                     </p>
                 </div>  
-                <p className="text-3xl mt-6 capitalize font- text-center">
+                <p className="text-3xl mt-12  md:mt-6 capitalize font- text-center">
                         {role} Interview
                 </p>
 
@@ -60,8 +60,8 @@ const InterviewCard = async({ id, userId, role, type, createdAt}: InterviewCardP
                     {feedback?.finalAssessment || "You’re the hero of this story — interviews don’t stand a chance! Go get it.."}
                 </p>
 
-                <div className="mt-10">
-                    <Button className="w-full">
+                <div className="mt-10 pb-4 md:pb-0">
+                    <Button className="w-full hover:bg-primary/80 text-md">
                         <Link href={feedback ? `/dashboard/interview/${id}/feedback` : `/dashboard/interview/${id}`}>
                             {feedback ? 'Check Feedback' : 'Take Interview'}
                         </Link>

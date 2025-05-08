@@ -18,7 +18,7 @@ export default async function Dashboard() {
         <Header />
 
         <section>
-            <div className="bg-gradient-to-t from-white  via-slate-200 to-slate-500 dark:bg-gradient-to-t dark:from-background  dark:via-zinc-950 dark:to-slate-500">
+            <div className="bg-gradient-to-t from-white  via-slate-200 to-slate-500 dark:bg-gradient-to-t dark:from-background dark:via-zinc-950 dark:to-slate-500 pt-6">
                 <div className="flex justify-center items-center md:gap-15 mx-10">
                     <div>
                         <blockquote className="mt-6 md:mt-0 text-center md:text-start text-3xl font-semibold text-gray-900 italic dark:text-white">
@@ -27,13 +27,13 @@ export default async function Dashboard() {
                             <span className="relative text-white dark:text-gray-950">ON</span>
                         </span>
                         </blockquote>
-                        <div className="text-2xl text-wrap max-w-200 pl-1 py-6">Welcome to the CrackWithAI. No pressure… just your skills, mindset, and story on full display.
+                        <div className="text-2xl text-wrap max-w-200 pl-1 py-6 tracking-tight">Welcome to the CrackWithAI. No pressure… just your skills, mindset, and story on full display.
                         Power up—your moment starts now. ⚡
                         </div>
-                        <div className="mt-2 ml-2 flex justify-center md:justify-start">
+                        <div className="mt-4 md:mt-8 ml-2 flex justify-center md:justify-start">
                             <a href="/dashboard/interview">
                                 <button className="cursor-pointer relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-md font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+                                    <span className="text-lg relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
                                         Create an Interview Now!!
                                     </span>
                                 </button>
@@ -53,9 +53,9 @@ export default async function Dashboard() {
             </div>
         </section>
 
-        <section className="mx-18 md:mx-30">
-            <div className="flex flex-col gap-6 mt-20">
-                <h2 className="text-4xl pb-6">Your Interviews</h2>
+        <section className="mx-12 md:mx-30">
+            <div className="flex flex-col gap-6 mt-16 md:mt-30">
+                <h2 className="text-4xl font-semibold pb-2 md:pb-6 tracking-tight">Your Interviews</h2>
 
                 <div className="flex flex-wrap gap-10 max-lg:flex-col w-full items-stretch pb-20">
                     {hasPastInterview ? (
@@ -63,12 +63,13 @@ export default async function Dashboard() {
                             <InterviewCard {...interview} key={interview.id} />
                         ))
                     ) : (
-                        <p>You haven't taken any interview yet</p>
+                        <p className="text-lg font-medium mt-4">You haven't taken any interview yet</p>
                     )
                     }
                 </div>
             </div>
         </section>
+
         <Footer />
     </div>
 }
