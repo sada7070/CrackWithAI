@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
-import { createFeedback } from "@/app/lib/createFeedback";
+import { createFeedback } from "@/app/lib/generalAction";
 
 interface AgentProps {
     firstName: string;

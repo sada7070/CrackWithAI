@@ -12,7 +12,7 @@ type FooterProps = {
 
 export function Footer({ navItems }: FooterProps) {
     return <footer className="border-t bg-white dark:bg-background">
-    <div className="container flex flex-col gap-6 py-8 md:py-12 px-4 md:px-6">
+    <div className="container flex flex-col gap-6 py-8 px-4 md:px-6">
       <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
         <div className="flex items-center gap-2 font-bold text-xl">
           <BrainCog className="h-6 w-6 text-primary" />
