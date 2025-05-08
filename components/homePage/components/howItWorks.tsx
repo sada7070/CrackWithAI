@@ -1,6 +1,4 @@
 import { SimpleCard } from "@/components/ui/simpleCard";
-import { Play } from "lucide-react";
-import Image from "next/image";
 
 export function HowItWorks(){
     return <section id="how-it-works" className="py-24">
@@ -16,39 +14,23 @@ export function HowItWorks(){
                     </p>
                 </div>
             </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 mt-12">
-            <SimpleCard num={1}
-                  label="Create Your Profile"
-                  content="Tell us about your industry, target role, and experience level so we can customize your practice sessions."
-            />
 
-            <SimpleCard num={2}
-                  label="Practice with AI"
-                  content="Engage in realistic interview conversations with our AI voice agent that responds to your answers."
-            />
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 mt-12">
+                <SimpleCard num={1}
+                    label="Create Your Profile"
+                    content="Tell us about your industry, target role, and experience level so we can customize your practice sessions."
+                />
 
-            <SimpleCard num={3}
-                  label="Review & Improve"
-                  content="Get detailed feedback on your performance and specific suggestions for improvement."
-            />
-        </div>
-        
-        <div className="mt-16 flex justify-center">
-            <div className="relative rounded-lg overflow-hidden shadow-xl">
-            <Image
-                src="/placeholder.svg?height=400&width=700"
-                alt="Interview Practice Demo"
-                width={700}
-                height={400}
-                className="object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="rounded-full bg-white/90 p-4 shadow-lg">
-                <Play className="h-12 w-12 text-primary" />
-                </div>
+                <SimpleCard num={2}
+                    label="Practice with AI"
+                    content="Engage in realistic interview conversations with our AI voice agent that responds to your answers."
+                />
+
+                <SimpleCard num={3}
+                    label="Review & Improve"
+                    content="Get detailed feedback on your performance and specific suggestions for improvement."
+                />
             </div>
-            </div>
-        </div>
         </div>
   </section>
 }
