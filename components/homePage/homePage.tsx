@@ -25,8 +25,6 @@ export function HomePage() {
             navItems={[
                 { label: "Features", href: "#features" },
                 { label: "How It Works", href: "#how-it-works" },
-                { label: "Privacy Policy", href: "#" },
-                { label: "Terms of Service", href: "#" },
             ]}
         />
     </div>
