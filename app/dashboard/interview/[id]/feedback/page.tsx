@@ -29,7 +29,7 @@ export default async function Feddback({params}: RouteParams) {
     return <div>
         <Header  />
 
-            <section className="flex flex-col gap-8 max-w-5xl mx-auto max-sm:px-4 text-lg leading-7 my-6">
+            <section className="flex flex-col gap-8 max-w-5xl mx-auto max-sm:px-4 text-lg leading-7 my-10">
                 <div className="flex flex-row justify-center">
                     <h1 className="text-4xl font-semibold">
                         Feedback on the Interview -{" "}
@@ -69,9 +69,9 @@ export default async function Feddback({params}: RouteParams) {
 
             {/* Interview Breakdown */}
             <div className="flex flex-col gap-4">
-                <p className="text-3xl font-bold">Breakdown of the Interview:</p>
+                <p className="text-3xl font-bold py-2">Breakdown of the Interview:</p>
                 {feedback?.categoryScores?.map((category, index) => (
-                <div key={index}>
+                <div key={index} className="pb-2">
                     <p className="font-bold">
                         {index + 1}. {category.name} ({category.score}/100)
                     </p>
@@ -80,7 +80,7 @@ export default async function Feddback({params}: RouteParams) {
                 ))}
             </div>
 
-            <div className="flex flex-col gap-3">
+            {/* <div className="flex flex-col gap-3">
                 <p className="text-3xl font-bold">Strengths</p>
                 <ul>
                     {feedback?.strengths?.map((strength, index) => (
@@ -89,13 +89,13 @@ export default async function Feddback({params}: RouteParams) {
                         </p>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
             <div className="flex flex-col gap-3">
                 <p className="text-3xl font-bold">Areas for Improvement</p>
-                <ul>
+                <ul className="pb-4">
                     {feedback?.areasForImprovement?.map((area, index) => (
-                        <div>
+                        <div className="pb-1">
                             <li key={index}> - {area}</li>
                         </div>
                     ))}
@@ -103,20 +103,20 @@ export default async function Feddback({params}: RouteParams) {
             </div>
 
             <div className="flex w-full justify-evenly gap-4 max-sm:flex-col max-sm:items-center">
-                <Button variant='secondary' className="flex-1">
-                    <Link href="/" className="flex w-full justify-center">
-                        <p className="text-sm font-semibold text-primary-200 text-center">
+                <Button variant='secondary' size='lg' className="flex-1 border-1 border-slate-900 hover:bg-slate-200 dark:hover:bg-slate-600">
+                    <Link href="/dashboard" className="flex w-full justify-center">
+                        <p className="text-lg font-semibold text-primary-200 text-center">
                             Back to dashboard
                         </p>
                     </Link>
                 </Button>
 
-                <Button className="flex-1">
+                <Button className="flex-1 hover:bg-slate-700 dark:hover:bg-slate-300" size='lg'>
                     <Link
                         href={`/dashboard/interview/${id}`}
                         className="flex w-full justify-center"
                     >
-                        <p className="text-sm font-semibold text-black text-center">
+                        <p className="text-lg font-semibold text-white dark:text-black text-center">
                             Retake Interview
                         </p>
                     </Link>

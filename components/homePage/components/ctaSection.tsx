@@ -24,7 +24,7 @@ export function CTASection() {
           </Link>
             
           <Link href='signup'>
-            <Button size="lg" variant="outline" className="text-black border-white bg-slate-500 hover:bg-slate-400 dark:hover:bg-slate-800 dark:border-slate-950">
+            <Button size="lg" variant="outline" className="text-black border-white bg-slate-400 hover:bg-slate-500 dark:hover:text-black dark:hover:bg-slate-300 dark:border-slate-950">
               SignUp
             </Button>
           </Link>
