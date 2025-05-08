@@ -7,7 +7,7 @@ interface FeaturesCardProps {
 }
 
 export function FeaturesCard({label, content, icon}: FeaturesCardProps) {
-    return <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-xl mx-6 md:mx-0 shadow-slate-200 dark:shadow-slate-900">
+    return <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-xl mx-6 md:mx-0 dark:shadow-slate-700 shadow-slate-400">
       <div>{icon}</div>
       <h3 className="text-xl font-bold">{label}</h3>
       <p className="text-center text-gray-500">

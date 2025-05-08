@@ -17,21 +17,22 @@ export function SigninPage() {
 
     return <div className="h-screen">
          <Header />
+
          <div className="w-screen flex justify-center items-center">
-        <div className="border-3 shadow-xl rounded-2xl mt-35 md:m-35 p-6 px-10">
+        <div className="border-3 border-slate-400 rounded-2xl mt-35 md:m-35 p-6 px-10 shadow-2xl dark:shadow-slate-800 shadow-slate-600">
             <div>
-                <h1 className="text-3xl pb-4">Signin</h1>
-                <h3>Email</h3>
+                <h1 className="text-3xl font-semibold pb-4">Signin</h1>
+                <h3 className="pb-1 font-medium">Email</h3>
                 <Input onChange={(e) => {
                     setEmail(e.target.value);
-                }} placeholder="john10@email.com" />
+                }} placeholder="Enter your Email" />
 
-                <h3 className="pt-2">Password</h3>
+                <h3 className="pt-4 pb-1 font-medium">Password</h3>
                 <Input onChange={(e) => {
                     setPassword(e.target.value);
-                }} placeholder="********" />
+                }} type="password" placeholder="********" />
 
-                <p className="text-sm pt-2"> Don't have an account?
+                <p className="text-sm font-medium pt-5"> Don't have an account?
                     <Link href='/signup'>
                         <Button className="underline pl-2 cursor-pointer" variant='link' size='sm'>Signup</Button>
                     </Link>
@@ -52,9 +53,8 @@ export function SigninPage() {
                     } catch(err) {
                         console.error("Signup failed:", err);
                         toast.error("Signin failed. Please check your details.");
-                    
                     }
-                }} className="cursor-pointer">Singin</Button>
+                }} className="cursor-pointer w-full">Singin</Button>
             </div>
         </div>  
     </div>
