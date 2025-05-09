@@ -92,8 +92,10 @@ const Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) =>
         }
     }
 
+    const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
+
     useEffect(() => {
-        if(callStatus === CallStatus.FINISHED) {
+        if(isCallInactiveOrFinished) {
             if(type === 'generate') {
                 router.push('/dashboard');
             } else {
@@ -136,7 +138,6 @@ const Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) =>
     }
 
     const latestMessage = messages[messages.length - 1]?.content;
-    const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
     const userName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
     return <div>
