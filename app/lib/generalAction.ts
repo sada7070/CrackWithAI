@@ -74,6 +74,27 @@ interface CreateFeedbackParams {
 export async function createFeedback(params: CreateFeedbackParams) {
   const { interviewId, userId, transcript } = params;
 
+  // if the user retake the interview, we clear the previous feedback generated and update it with the new one.   
+  try{
+    // first clearing the cateforyScore table to avoid foreign key constraint voilated error.
+    await prismaClient.categoryScore.deleteMany({
+      where: {
+        feedback: {
+          interviewId
+        }
+      }
+    });
+    
+    await prismaClient.feedback.deleteMany({
+      where: {
+        interviewId
+      }
+    });
+  } catch(e) {
+    console.error("Error: ", e);
+  }
+  
+
   try{
     const formattedTranscript = transcript.map((sentence: { role: string, content: string}) => (
       `- ${sentence.role}: ${sentence.content}\n`

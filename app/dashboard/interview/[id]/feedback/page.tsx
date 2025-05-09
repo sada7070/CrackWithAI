@@ -91,7 +91,7 @@ export default async function Feddback({params}: RouteParams) {
                     ))}
                     </ul>
                 ) : (
-                    <p className="text-gray-500">No strong points were presented during the interview.</p>
+                    <p className="text-gray-500">The candidate did not present any points that clearly demonstrated his or her strengths</p>
                 )}
             </div>
 
