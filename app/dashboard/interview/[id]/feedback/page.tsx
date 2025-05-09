@@ -80,23 +80,28 @@ export default async function Feddback({params}: RouteParams) {
                 ))}
             </div>
 
-            {/* <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
                 <p className="text-3xl font-bold">Strengths</p>
-                <ul>
-                    {feedback?.strengths?.map((strength, index) => (
-                        <p className="font-bold">
-                            <li key={index}>{strength}</li>
-                        </p>
+                {feedback?.strengths?.length ? (
+                    <ul className="list-disc pl-5">
+                    {feedback.strengths.map((strength, index) => (
+                        <li key={index} className="pb-1">
+                        {strength}
+                        </li>
                     ))}
-                </ul>
-            </div> */}
+                    </ul>
+                ) : (
+                    <p className="text-gray-500">No strong points were presented during the interview.</p>
+                )}
+            </div>
+
 
             <div className="flex flex-col gap-3">
                 <p className="text-3xl font-bold">Areas for Improvement</p>
-                <ul className="pb-4">
+                <ul className="pb-4 list-disc pl-5">
                     {feedback?.areasForImprovement?.map((area, index) => (
                         <div className="pb-1">
-                            <li key={index}> - {area}</li>
+                            <li key={index}>{area}</li>
                         </div>
                     ))}
                 </ul>

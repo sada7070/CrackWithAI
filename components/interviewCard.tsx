@@ -40,7 +40,7 @@ const InterviewCard = async({ id, userId, role, type, createdAt}: InterviewCardP
                         {normalizedType}
                     </p>
                 </div>  
-                <p className="text-3xl mt-12  md:mt-6 capitalize font- text-center">
+                <p className="text-2xl mt-12 md:mt-6 capitalize font-semibold text-center">
                         {role} Interview
                 </p>
 

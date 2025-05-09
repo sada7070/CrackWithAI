@@ -115,8 +115,6 @@ export async function createFeedback(params: CreateFeedbackParams) {
       }
     });
 
-    console.log(feedback.strengths);
-
     return {
       success: true,
       feedbackId: feedback.id

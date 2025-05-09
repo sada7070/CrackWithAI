@@ -4,7 +4,7 @@ import { BrainCog } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
 import { createFeedback } from "@/app/lib/generalAction";
@@ -93,16 +93,28 @@ const Agent = ({firstName, userId, type, interviewId, questions}: AgentProps) =>
     }
 
     const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
+    const isFirstRun = useRef(true);
 
     useEffect(() => {
+        if(isFirstRun.current) {
+            isFirstRun.current = false;
+            return;
+        }
+
         if(isCallInactiveOrFinished) {
             if(type === 'generate') {
                 router.push('/dashboard');
-            } else {
+            }
+        }
+    },[isCallInactiveOrFinished]);
+
+    useEffect(()=> {
+        if(callStatus === CallStatus.FINISHED) {
+            if(type === 'interview') {
                 handleGenerateFeedback(messages);
             }
         }
-    },[callStatus, messages, type, userId]);
+    },[callStatus]);
     
     // to handle calls
     const handleCall = async() => {
