@@ -1,5 +1,4 @@
 import { TestimonialCard } from "@/components/ui/testimonialCard";
-import Image from "next/image";
 
 export function Testimonials() {
     return  <div className="container px-4 md:px-6 pb-32">

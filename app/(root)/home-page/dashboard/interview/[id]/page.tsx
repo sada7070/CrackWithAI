@@ -19,7 +19,7 @@ const TakeInterview = async({ params }: RouteParams) => {
     if(!user) redirect('/');
 
     const interview = await getInterviewById(id);
-    if(!interview) redirect('/dashboard');
+    if(!interview) redirect('/home-page/dashboard');
 
     return  <div>
         <Header />
@@ -32,7 +32,7 @@ const TakeInterview = async({ params }: RouteParams) => {
                 <p className="text-2xl">|</p>
             </div>
 
-            <p className="bg-slate-600 px-2 rounded-md mt-1">{interview.type}</p>
+            <p className="bg-slate-600 text-white px-2 rounded-md mt-1">{interview.type}</p>
         </div>
         
         <div className="mt-10 mx-17 md:mx-40">

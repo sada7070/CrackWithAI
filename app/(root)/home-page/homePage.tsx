@@ -1,9 +1,9 @@
-import { CTASection } from "@/components/homePage/components/ctaSection";
-import { Features } from "@/components/homePage/components/features";
+import { CTASection } from "@/components/ctaSection";
+import { Features } from "@/components/features";
 import { Footer } from "@/components/ui/footer";
-import { HeroSection } from "@/components/homePage/components/heroSection";
-import { HowItWorks } from "@/components/homePage/components/howItWorks";
-import { Testimonials } from "@/components/homePage/components/testimonials";
+import { HeroSection } from "@/components/heroSection";
+import { HowItWorks } from "@/components/howItWorks";
+import { Testimonials } from "@/components/testimonials";
 import { Header } from "@/components/ui/header";
 
 export function HomePage() {

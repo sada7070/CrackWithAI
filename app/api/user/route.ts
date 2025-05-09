@@ -1,7 +1,7 @@
 // route to get user info
 
 import { NextRequest, NextResponse } from "next/server";
-import { userMiddleware } from "../middleware/userAuth/route";
+import { userMiddleware } from "../middleware/route";
 import { prismaClient } from "@/app/lib/db";
 
 export async function GET(req: NextRequest) {

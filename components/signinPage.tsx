@@ -49,7 +49,7 @@ export function SigninPage() {
                         });
                         localStorage.setItem('token', res.data.token);
                         toast.success("Signin successful!");
-                        router.push("/dashboard");
+                        router.push("/home-page/dashboard");
                     } catch(err) {
                         console.error("Signup failed:", err);
                         toast.error("Signin failed. Please check your details.");

@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/homePage/homePage";
+import { HomePage } from "./(root)/home-page/homePage"
 
 export default function Home() {
   return <div className="flex flex-col min-h-screen">

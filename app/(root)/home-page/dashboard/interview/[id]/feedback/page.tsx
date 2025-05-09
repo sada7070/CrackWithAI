@@ -91,7 +91,7 @@ export default async function Feddback({params}: RouteParams) {
                     ))}
                     </ul>
                 ) : (
-                    <p className="text-gray-500">The candidate did not present any points that clearly demonstrated his or her strengths</p>
+                    <p className="text-gray-500">The candidate did not present any points that clearly demonstrated their strengths</p>
                 )}
             </div>
 
@@ -100,16 +100,17 @@ export default async function Feddback({params}: RouteParams) {
                 <p className="text-3xl font-bold">Areas for Improvement</p>
                 <ul className="pb-4 list-disc pl-5">
                     {feedback?.areasForImprovement?.map((area, index) => (
-                        <div className="pb-1">
-                            <li key={index}>{area}</li>
-                        </div>
+                        <li key={index} className="pb-1">
+                            {area}
+                        </li>
                     ))}
                 </ul>
+
             </div>
 
             <div className="flex w-full justify-evenly gap-4 max-sm:flex-col max-sm:items-center">
                 <Button variant='secondary' size='lg' className="flex-1 border-1 border-slate-900 hover:bg-slate-200 dark:hover:bg-slate-600">
-                    <Link href="/dashboard" className="flex w-full justify-center">
+                    <Link href="/home-page/dashboard" className="flex w-full justify-center">
                         <p className="text-lg font-semibold text-primary-200 text-center">
                             Back to dashboard
                         </p>
@@ -118,7 +119,7 @@ export default async function Feddback({params}: RouteParams) {
 
                 <Button className="flex-1 hover:bg-slate-700 dark:hover:bg-slate-300" size='lg'>
                     <Link
-                        href={`/dashboard/interview/${id}`}
+                        href={`/home-page/dashboard/interview/${id}`}
                         className="flex w-full justify-center"
                     >
                         <p className="text-lg font-semibold text-white dark:text-black text-center">
