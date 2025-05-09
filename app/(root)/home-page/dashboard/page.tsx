@@ -1,6 +1,5 @@
 import { Footer } from "@/components/ui/footer";
 import { Header } from "@/components/ui/header";
-import Image from "next/image";
 import { getInterviewsByUserId } from "@/app/lib/generalAction";
 import InterviewCard from "@/components/interviewCard";
 import { getUserFromToken } from "@/app/lib/generalAction";
