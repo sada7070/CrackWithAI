@@ -69,7 +69,7 @@ export function SignupPage() {
                             console.error("Signup failed:", err);
                             toast.error("Signup failed. Please check your details.");
                         }
-                }} className="cursor-pointer w-full">Singup</Button>
+                }} className="cursor-pointer w-full">Signup</Button>
             </div>
         </div>  
     </div>  
