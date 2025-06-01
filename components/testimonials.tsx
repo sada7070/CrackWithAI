@@ -1,7 +1,7 @@
 import { TestimonialCard } from "@/components/ui/testimonialCard";
 
 export function Testimonials() {
-    return  <div className="container px-4 md:px-6 pb-32">
+    return  <div className="px-4 md:px-6 pb-32">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                     <div className="space-y-2">
                     <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Testimonials</div>

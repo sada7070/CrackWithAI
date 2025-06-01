@@ -18,7 +18,7 @@ export default async function Dashboard() {
 
         <section>
             <div className="bg-gradient-to-t from-white  via-slate-200 to-slate-500 dark:bg-gradient-to-t dark:from-background dark:via-zinc-950 dark:to-slate-500 md:pt-10">
-                <div className="flex justify-start md:gap-15 mx-6 md:ml-30">
+                <div className="flex justify-start md:gap-15 mx-6 md:ml-30 lg:ml-50">
                     <div>
                         <blockquote className="mt-6 md:mt-0 text-center md:text-start text-3xl font-semibold text-gray-900 italic dark:text-white">
                             🎮 Game Mode:
@@ -44,7 +44,7 @@ export default async function Dashboard() {
             </div>
         </section>
 
-        <section className="mx-12 md:mx-30">
+        <section className="mx-12 md:mx- lg:mx-50">
             <div className="flex flex-col gap-6 mt-16 md:mt-30">
                 <h2 className="text-4xl font-semibold pb-2 md:pb-6 tracking-tight">Your Interviews</h2>
 

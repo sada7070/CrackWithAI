@@ -8,7 +8,7 @@ interface TestimonialCardProps {
 }
 
 export function TestimonialCard({name, role, review, imageSrc}: TestimonialCardProps) {
-    return <div className="flex flex-col space-y-4 rounded-lg border p-6 mx-6 md:mx-0 shadow-lg shadow-slate-400 dark:shadow-slate-700">
+    return <div className="flex flex-col space-y-4 rounded-lg border p-6 mx-6 md:mx-0 shadow-lg shadow-slate-400 hover:shadow-slate-700 dark:shadow-slate-700 dark:hover:shadow-slate-500">
         <div className="flex items-center space-x-4">
             <Image
                 src={imageSrc}

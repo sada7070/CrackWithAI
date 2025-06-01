@@ -16,6 +16,7 @@ export function HomePage() {
             buttonLabel="Get Started"
             buttonHref="/signin"
         />
+        
         <HeroSection />
         <Features />
         <HowItWorks />

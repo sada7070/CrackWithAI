@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/brain-cog.svg"
   },
-  description: "AI-Powered Voice Practice for interviews  ",
+  description: "AI-Powered Voice Practice for interviews.",
 };
 
 export default function RootLayout({

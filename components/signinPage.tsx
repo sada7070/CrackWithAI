@@ -18,7 +18,7 @@ export function SigninPage() {
     return <div className="h-screen">
          <Header />
 
-         <div className="w-screen flex justify-center items-center">
+         <div className="w-screen flex justify-center pt-24">
         <div className="border-3 border-slate-400 rounded-2xl mt-35 md:m-35 p-6 px-10 shadow-2xl dark:shadow-slate-800 shadow-slate-600">
             <div>
                 <h1 className="text-3xl font-semibold pb-4">Signin</h1>
@@ -34,7 +34,7 @@ export function SigninPage() {
 
                 <p className="text-sm font-medium pt-5"> Don't have an account?
                     <Link href='/signup'>
-                        <Button className="underline pl-2 cursor-pointer" variant='link' size='sm'>Signup</Button>
+                        <Button className="underline pl-2 cursor-pointer font-bold" variant='link' size='sm'>Signup</Button>
                     </Link>
                 </p>
             </div>
@@ -54,7 +54,7 @@ export function SigninPage() {
                         console.error("Signup failed:", err);
                         toast.error("Signin failed. Please check your details.");
                     }
-                }} className="cursor-pointer w-full">Signin</Button>
+                }} className="cursor-pointer font-medium w-full">Signin</Button>
             </div>
         </div>  
     </div>

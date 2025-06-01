@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function HeroSection() {
     return <section className="w-full pt-12 md:py-24 pb-18 lg:pl-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-background">
-            <div className="container px-4 md:px-6">
+            <div className="px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
 
                 <div className="flex flex-col justify-center space-y-4">
@@ -30,18 +30,18 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                <div className="mx-auto lg:mx-0 relative pt-6 md:pt-0">
+                <div className="mx-auto lg:mx-0 relative pt-6 md:pt-0 lg:pl-28">
                   <Image
                     src="/hero_section.jpg"
                     alt="AI Interview Practice"
                     width={0}
                     height={0}
                     sizes="100vw, 400px"  
-                    className="w-full md:w-[500px] rounded-lg object-cover"
+                    className="w-full md:w-[550px] rounded-lg object-cover"
                     priority
                   />
 
-                  <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
+                  <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg lg:ml-28">
                     <div className="flex items-center gap-2">
                       <span className="relative flex size-3">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>

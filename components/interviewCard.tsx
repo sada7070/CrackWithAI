@@ -32,7 +32,7 @@ const InterviewCard = async({ id, userId, role, type, createdAt}: InterviewCardP
     const normalizedType = /mix/gi.test(type) ? 'Mixed' : type;
     const formattedDate = dayjs(feedback?.createdAt || createdAt || Date.now()).format('D MMM, YYYY');
 
-    return <div className="bg-gradient-to-b from-slate-400  via-slate-800 to-slate-400 dark:bg-gradient-to-b dark:from-zinc-400 dark:via-slate-800 dark:to-slate-400 p-0.5 pt-0.75 rounded-2xl w-[320px] max-sm:w-full min-h-88">
+    return <div className="bg-gradient-to-b from-slate-400  via-slate-800 to-slate-400 dark:bg-gradient-to-b dark:from-zinc-400 dark:via-slate-800 dark:to-slate-400 p-0.5 pt-0.75 rounded-2xl w-[320px] min-h-88">
         <div className="bg-secondary dark:bg-gradient-to-b dark:from-zinc-950 dark:to-secondary/100 rounded-2xl mix-h-1/6 flex flex-col md:p-6 relative overflow-hidden gap-10 justify-between">
             <div className="mx-2 md:mx-0">
                 <div className="absolute top-0 right-0 w-fit px-2 md:px-4 py-2 text-white rounded-bl-lg bg-primary dark:bg-slate-200 dark:text-black">
@@ -56,7 +56,7 @@ const InterviewCard = async({ id, userId, role, type, createdAt}: InterviewCardP
                     </div>
                 </div>
 
-                <p className="line-clamp-2 mt-5 flex justify-center dark:text-slate-300 text mx-2 max-h-18">
+                <p className="line-clamp-2 mt-5 flex justify-center dark:text-slate-300 text mx-2 max-h-17">
                     {feedback?.finalAssessment || "You’re the hero of this story — interviews don’t stand a chance! Go get it.."}
                 </p>
 

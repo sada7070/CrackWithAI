@@ -3,7 +3,7 @@ import { Award, Calendar, CheckCircle, Mic } from "lucide-react";
 
 export function Features() {
     return <section id="features">
-    <div className="container px-4 md:px-6 pt-10 md:py-10">
+    <div className="px-4 md:px-6 pt-10 md:py-10">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
         <div className="space-y-2">
           <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Features</div>
