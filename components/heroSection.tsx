@@ -19,7 +19,8 @@ export function HeroSection() {
 
                   <p className="max-w-[650px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     No more awkward mirror rehearsals or begging friends to play pretend recruiter. Just talk to our smart AI like you’re on a 
-                    real call, and get helpful feedback immediately. It’s interview prep made easy, chill, and actually kind of fun.                </p>
+                    real call, and get helpful feedback immediately. It’s interview prep made easy, chill, and actually kind of fun.
+                  </p>
                   
                   <div className="flex justify-center md:justify-start gap-2 min-[400px]:flex-row">
                     <Link href="/signin">

@@ -38,6 +38,7 @@ export function SigninPage() {
                     </Link>
                 </p>
             </div>
+
             <div className="pt-2">
                 <Button 
                 disabled={!email || !password}
@@ -56,6 +57,7 @@ export function SigninPage() {
                     }
                 }} className="cursor-pointer font-medium w-full">Signin</Button>
             </div>
+            
         </div>  
     </div>
     </div>

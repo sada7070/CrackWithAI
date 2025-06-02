@@ -65,7 +65,7 @@ export default async function Feddback({params}: RouteParams) {
 
             <hr />
 
-            <p>{feedback?.finalAssessment}</p>
+            <p className="text-xl font-semibold">{feedback?.finalAssessment}</p>
 
             {/* Interview Breakdown */}
             <div className="flex flex-col gap-4">
@@ -118,10 +118,7 @@ export default async function Feddback({params}: RouteParams) {
                 </Button>
 
                 <Button className="flex-1 hover:bg-slate-700 dark:hover:bg-slate-300" size='lg'>
-                    <Link
-                        href={`/home-page/dashboard/interview/${id}`}
-                        className="flex w-full justify-center"
-                    >
+                    <Link href={`/home-page/dashboard/interview/${id}`} className="flex w-full justify-center">
                         <p className="text-lg font-semibold text-white dark:text-black text-center">
                             Retake Interview
                         </p>

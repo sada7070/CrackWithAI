@@ -35,7 +35,7 @@ const TakeInterview = async({ params }: RouteParams) => {
             <p className="bg-slate-600 text-white px-2 rounded-md mt-1">{interview.type}</p>
         </div>
         
-        <div className="mt-10 mx-17 md:mx-40">
+        <div className="mt-10 mx-17 md:mx-30 lg:mx-40">
             <Agent
                 firstName={user?.firstName}
                 userId={user?.userId}

@@ -51,6 +51,7 @@ export function SignupPage() {
                     </Link>
                 </p>
             </div>
+            
             <div className="pt-2">
                 <Button
                   disabled={!firstName || !lastName || !email || !password}

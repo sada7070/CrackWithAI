@@ -17,7 +17,7 @@ interface HeaderProps {
 export function Header({ navLinks, buttonLabel, buttonHref }: HeaderProps) {
   return (
     <header className="border-b mx-auto">
-      <div className="flex h-16 items-center justify-between px-4 md:px-6 bg-gradient-to-b from-white to-slate-500 dark:bg-gradient-to-b dark:from-slate-950 dark:to-slate-400">
+      <div className="flex h-20 items-center justify-between px-4 md:px-6 bg-gradient-to-b from-white to-slate-500 dark:bg-gradient-to-b dark:from-slate-950 dark:to-slate-400">
         <div className="flex items-center gap-2 font-bold text-xl">
           <BrainCog className="h-6 w-6 text-primary" />
           <Link href="/">
